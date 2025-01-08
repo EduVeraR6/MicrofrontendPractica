@@ -5,7 +5,7 @@ import { IDENTITY_CONFIG } from '../oauthConfig/config';
 const userManager = new UserManager(IDENTITY_CONFIG);
 
 const api = axios.create({
-  baseURL: 'https://localhost:7181',
+  baseURL: 'http://192.168.0.115:8080',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -15,6 +15,8 @@ api.interceptors.request.use(
   async (config) => {
     const user = await userManager.getUser();
     
+    console.log("Token:" + user?.access_token);
+
     if (user && user.access_token) {
       const expirationTime = user.expires_at ? user.expires_at * 1000 : 0; 
       const now = new Date().getTime();
