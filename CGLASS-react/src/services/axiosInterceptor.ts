@@ -5,7 +5,7 @@ import { IDENTITY_CONFIG } from '../oauthConfig/config';
 const userManager = new UserManager(IDENTITY_CONFIG);
 
 const api = axios.create({
-  baseURL: 'http://192.168.0.115:8080',
+  baseURL: 'https://localhost:7181',
   headers: {
     'Content-Type': 'application/json',
   },
